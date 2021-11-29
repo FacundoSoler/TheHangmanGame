@@ -1,0 +1,72 @@
+<div>
+  <div *ngIf="showSplashScreen; else Game" class="splashScreen">
+    <br />
+    <button class="btn btn-primary splashStartButton" (click)="onStartGame()">
+      {{ languageTemplate.hangmanSection.startGame }}</button>
+  </div>
+ <ng-template #Game>
+ <div class="container">
+  <a name="top"></a>
+    <h1>
+      <label> {{ languageTemplate.hangmanSection.round }}: {{ gameEngineService.round }}</label>
+    </h1>
+    <!-- *********** LIVES SECTION ************ -->
+    <div class="hangmanLives">
+      {{ languageTemplate.hangmanSection.lives }}:
+       {{ gameEngineService.currentLives.length }} <img class="hearts" src="../assets/Heart5.png" alt="">
+      <br />
+    </div>
+    <hr />
+
+    <div class="hiddenWordContainer">
+      <div class="hiddenWord">
+        <label>{{ languageTemplate.hangmanSection.hiddenWord }}: </label> <br />
+         <label>{{ gameEngineService.hiddenWord.join(' ') }}</label>
+      </div>
+      <div>
+        <img class="hangmanAnimation" #hangmanAnimation src="../../assets/HangmanAnimation0.png" alt="">
+      </div>
+       <!-- *********** TIMER SECTION ************** -->
+       <div class="timer">
+        {{ languageTemplate.hangmanSection.timeLeft }}:
+        <app-hourglass></app-hourglass>
+      </div>
+    </div>
+    <br>
+    <div>
+        <label class="centerdivContents">{{ languageTemplate.hangmanSection.lettersEntered }}:</label>
+        <br>
+           <ul class="letters">
+            <li class="letters" [ngClass]="letter.CssClass" *ngFor="let letter of gameEngineService.allLetters" (click)="onSelectLetter($event)">{{ letter.letter }}</li>
+          </ul>
+           <br>
+     </div>
+    <hr>
+     <!-- Form Section -->
+
+      <div class="centerDiv">
+        <label class="centerdivContents centeredLabel" for="">{{ languageTemplate.hangmanSection.guessWord }}:</label>
+        <input class="form-control centeredTextBox"
+        #guessedWord
+        id="guessedWord"
+        oninput="this.value = this.value.toUpperCase()"
+        autocapitalize="off"
+        autocomplete="off"
+        spellcheck="false"
+        autocorrect="off"
+        type="text"
+        [disabled]="gameEngineService.currentLives.length === 0 ? true : false" />
+
+        <button [disabled]="gameEngineService.currentLives.length === 0 ? true : false"
+        (click)="onGuessWord(guessedWord)"
+        class="btn btn-primary centerdivContents guessBtn" >
+        {{ languageTemplate.hangmanSection.guessButton }} </button>
+      </div>
+      <br>
+      <button class="btn btn-danger centerdivContents restartBtn" type="button" (click)="onEndGame()">
+       {{ languageTemplate.hangmanSection.restart }} &#8634;
+      </button>
+    <div *ngIf="message" [ngClass]="messageClass">{{ message }}</div>
+   </div>
+  </ng-template>
+</div>
