@@ -1,0 +1,14 @@
+<body>
+  <app-header></app-header>
+  <div class="hangman">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+
+  <div class="footer">
+    <hr>
+    <label for="">{{ languageTemplate.footer.footer }}</label>
+  </div>
+</body>
+
+
+

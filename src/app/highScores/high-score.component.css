@@ -1,0 +1,76 @@
+div.slide-up {
+  overflow:hidden;
+  animation: 2s slide-up;
+  margin-top:0%;
+}
+
+@keyframes slide-up {
+  from {
+    margin-top: 40%;
+    height: 100%;
+  }
+
+  to {
+    margin-top: 0%;
+    height: 100%;
+  }
+}
+
+	.TFtable{
+		border-collapse:collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 95%;
+    box-shadow: 2px 2px 4px 2px #708382;
+	}
+	.TFtable td{
+		padding:7px; border:#4e95f4;
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+
+	/*  Define the background color for all the ODD background rows  */
+  .TFtable tr:nth-child(odd){
+    background-color: rgb(185, 157, 230, 0.5);
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+    background-color: rgb(193, 170, 229, 0.5);
+	}
+  table, tr, td {
+    text-align: center;
+  }
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .theader tr{
+    background-color: rgb(149, 85, 252, 0.3) !important;
+    font-weight: bold;
+    border-bottom: 1px solid;
+  }
+  .highlight {
+    background-color:rgb(233, 91, 91) !important;
+    font-weight: bold;
+    animation: blinker 1s linear infinite;
+  }
+
+  .blink_me {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0.3;
+    }
+  }
+  .playAgain {
+    margin-top: 30px;
+    padding: 25px;
+    box-shadow: 5px 5px 0px 0px gray;
+  }
+  @media screen and (max-width: 768px) {
+    .playAgain {
+      padding: 15px;
+    }
+  }
+

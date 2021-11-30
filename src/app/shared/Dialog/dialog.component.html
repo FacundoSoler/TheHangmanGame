@@ -1,0 +1,46 @@
+<div *ngIf="isDataAvailable; else Loading">
+<h1 mat-dialog-title>{{ languageTemplate.hangmanDialogSection.roundResults }} {{ data.round }} 
+  {{ languageTemplate.hangmanDialogSection.results }}</h1>
+  <div mat-dialog-content>
+      <!-- Player guessed the word -->
+      <div *ngIf="!gameEngineService.gameOver; else fail" class="success" >
+        {{ languageTemplate.hangmanDialogSection.success }}
+        <br><br>
+        <img src="../../../assets/Star.png"> + {{gameEngineService.lastBonusAdded}}
+           {{ languageTemplate.hangmanDialogSection.bonus }}
+      </div>
+        <!-- Player has NOT guessed the word -->
+      <ng-template #fail>
+        <div class="fail">
+          {{ languageTemplate.hangmanDialogSection.failure }}
+        </div>
+        <br />
+
+        <div *ngIf="gameEngineService.hasNewHighScore">
+          <img class="trophey" src="../../../assets/Trophey.png">
+          {{ languageTemplate.hangmanDialogSection.newHighScore }} <img class="trophey" src="../../../assets/Trophey.png"><hr>
+          {{ languageTemplate.hangmanDialogSection.highScoreName }}:
+          <input id="playerName" class="form-control" placeholder="Enter 3 letters"
+          oninput="this.value = this.value.toUpperCase()" type="text" maxlength="3" [(ngModel)]="playerName">
+        </div>
+      </ng-template>
+    <hr />
+    {{ languageTemplate.hangmanDialogSection.hiddenWord }}: <b>{{ gameEngineService.chosenWord }}</b><br />
+    {{ languageTemplate.hangmanDialogSection.livesLeft }}: {{ gameEngineService.currentLives.length }}<br />
+    {{ languageTemplate.hangmanDialogSection.wordsGuessed }}: {{ gameEngineService.wordsGuessedStreak }}<br />
+    {{ languageTemplate.hangmanDialogSection.totalTime }}: {{ data.totalTime }} <br />
+    {{ languageTemplate.hangmanDialogSection.averageTime }}: {{ data.averageRoundTime }} {{ languageTemplate.hangmanSection.seconds }}
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button class="btn btn-primary" mat-button mat-dialog-close [disabled] = '(!data.guessed &&
+    (data.isNewHighScore && (playerName === "" || playerName.length < 3) )) ? true: false'
+    [mat-dialog-close]="playerName">  {{ languageTemplate.hangmanDialogSection.OKbutton }}</button> -->
+    <button (click)="onCloseDialog()" class="btn btn-primary" mat-button mat-dialog-close 
+    [disabled] = 'this.gameEngineService.hasNewHighScore && playerName.length != 3 ? true: false'
+    [mat-dialog-close]="playerName">  {{ languageTemplate.hangmanDialogSection.OKbutton }}</button>
+  </div>
+</div>
+<ng-template #Loading>
+  <h2>Loading Data ...</h2> 
+</ng-template>
+

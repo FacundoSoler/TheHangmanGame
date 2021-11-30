@@ -1,0 +1,40 @@
+<div *ngIf="showHighScoresTable">
+  <br>
+    <div class="slide-up">
+      <h2>{{ languageTemplate.highScoresSection.title }} </h2>
+      <br>
+        <table class="center TFtable " >
+          <thead class="theader">
+            <tr>
+              <td>Rank</td>
+              <td>{{ languageTemplate.highScoresSection.name }}</td>
+              <td>{{ languageTemplate.highScoresSection.round }}</td>
+              <td>{{ languageTemplate.highScoresSection.totalTime }}</td>
+              <td>{{ languageTemplate.highScoresSection.date }}</td>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let doc of data; let i = index"
+            [ngClass]="{'highlight': doc.payload.doc.id === highscoreId}">
+              <td># {{ i + 1 }}</td>
+                <td>{{ doc.payload.doc.data().name }}</td>
+                <td>{{ doc.payload.doc.data().round }}</td>
+                <td>{{ doc.payload.doc.data().totalSeconds }}</td>
+                <td>{{ doc.payload.doc.data().timeStamp.toDate().toGMTString() | date: 'dd MMM YYYY hh:mm'  }}</td>
+            </tr>
+          </tbody>
+      </table>
+      <br>
+    </div>
+    <button *ngIf="redirectedFromPlay" class="btn btn-primary playAgain" (click)="onPlayAgain()">
+      {{ languageTemplate.highScoresSection.playAgain.toUpperCase()}}
+      &#8634;
+      </button>
+</div>
+
+<!-- <marquee behavior="scroll" direction="left">HTML marquee...</marquee> -->
+
+
+
+
+

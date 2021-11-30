@@ -1,0 +1,67 @@
+* {
+  text-align: center;
+}
+.mat-dialog-actions {
+  justify-content: center;
+}
+.mat-dialog-container {
+  border-radius: 10px !important;
+}
+
+.success {
+  background-color: rgb(112 255 86);
+  border-radius: 10px;
+  padding: 10px;
+}
+.fail {
+ background-color: rgb(255 91 91 / 66%);
+ border-radius: 10px;
+ padding: 10px;
+}
+.mat-dialog-container {
+  background-color: rgb(119, 121, 216);
+}
+.trophey {
+  width: 10%;
+  height: auto;
+}
+:host {
+  position: absolute;
+  left: 0;
+  bottom: 35%;
+  top: 25%;
+  background-color: rgb(119, 121, 216);
+  margin-left: 40%;
+  height: 450px;
+  padding: 10px;
+  box-shadow: 0 0 10px 10px rgb(143, 145, 231);
+  border-radius: 8px;
+  width: 26em;
+}
+
+@media screen and (max-width: 768px) {
+  :host {
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+    top: 20%;
+    background-color: rgb(119, 121, 216);
+    margin-left: 20px;
+    height: 450px;
+    padding: 10px;
+    box-shadow: 0 0 10px 10px rgb(143, 145, 231);
+    border-radius: 8px;
+    width: 23em;
+  }
+  .mat-dialog-container{
+    display: contents;
+  }
+  .mat-dialog-container .ng-tns-c70-0 .ng-trigger .ng-trigger-dialogContainer .ng-star-inserted {
+    margin-left: -1000px;
+  }
+  :host .cdk-overlay-pane .success {
+    margin-left: -1000px;
+  }
+}
+
+
