@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
      this.language = this.commonService.setLanguage(value);
   }
   onActiveMenu(elementTarget) {
-    this.timerService.stopTimer();
     this.commonService.isGameOverSubject.next(true);
     var current = document.getElementsByClassName('active');
     current[0].classList.remove('active');

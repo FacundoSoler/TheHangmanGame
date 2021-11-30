@@ -39,6 +39,7 @@ export class HangManComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
+    this.timerService.stopTimer();
     this.timerSubscription.unsubscribe();
     this.gameEngineService.highScoreSubscription.unsubscribe();
   }
